@@ -1,6 +1,5 @@
 <div>
-    <x-message-banner />
-
+    <x-message-banner class="success" msg="Hello User " />
 
     {{-- <h1>{{rand(7,23,)}}</h1> --}}
 
@@ -11,27 +10,8 @@
     <h1>
         <?php echo "hello how are you" ?>
     </h1>
-    <style>
-        .success {
-            font-family: sans-serif;
-            font-weight: bold;
-            background: lightgreen;
-            color: green;
-            padding: 10px;
-            border-radius: 14px;
+    <h3 class="error    ">Aba Chalca hai ta</h3>
 
+    <x-message-banner $message="Password is Incorrect." />
 
-        }
-
-        .error {
-            font-family: sans-serif;
-            font-weight: bold;
-            background: rgb(37, 12, 9);
-            color: red;
-            padding: 10px;
-            border-radius: 14px;
-
-
-        }
-    </style>
 </div>
