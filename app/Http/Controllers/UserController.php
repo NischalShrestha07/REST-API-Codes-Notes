@@ -20,8 +20,48 @@ class UserController extends Controller
         // echo "Add User Function Called.";
 
     }
+
+    //NOTE TO BE REMEMBERED
+
+    // public function addGender(Request $request)
+    // {
+    //     // echo $request;
+    //     //all big randon details are returned here in this function
+
+    //     echo $request->city;
+    //     echo '<br>';
+    //     echo $request->gender;
+    //     echo '<br>';
+    //     echo $request->skill;
+    //     echo '<br>';
+
+    //     //as below subjects[] is an array so we cant convert/access array as string
+    //     print_r($request->subjects); // returns all the arrays details of subjects.
+    // }
+
     public function addGender(Request $request)
     {
-        echo $request;
+        $request->validate([
+            'subjects' => 'nullable',
+            'gender' => 'required',
+            'city' => 'required',
+            'skill' => 'required',
+            'username' => 'required',
+            'email' => 'required|email',
+            'cityname' => 'required|uppercase',
+        ]);
+        // echo $request;
+        echo $request->username;
+        echo '<br>';
+        echo $request->email;
+        echo '<br>';
+        echo $request->cityname;
+        echo '<br>';
+        // echo $request->skill;
+        print_r($request->skill);
+
+        echo '<br>';
+        print_r($request->subjects);
+        echo '<br>';
     }
 }
