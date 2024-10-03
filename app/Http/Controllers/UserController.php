@@ -12,6 +12,10 @@ class UserController extends Controller
     {
         return view('manage.home');
     }
+    public function add()
+    {
+        return view('manage.about');
+    }
     public function addUser(Request $request)
     {
         // return $request;

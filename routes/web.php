@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,4 +53,8 @@ Route::view('user-form', 'user-form');
 
 Route::prefix('student')->group(function () {
     Route::get('/show', [UserController::class, 'index']);
+    Route::get('/add', [UserController::class, 'add']);
+});
+Route::prefix('country')->group(function () {
+    Route::get('/nepal', [HomeController::class, 'nepal']);
 });
