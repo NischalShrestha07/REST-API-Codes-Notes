@@ -58,3 +58,20 @@ Route::prefix('student')->group(function () {
 Route::prefix('country')->group(function () {
     Route::get('/nepal', [HomeController::class, 'nepal']);
 });
+
+
+
+// Route::get('/show', [HomeController::class, 'show']);
+// Route::get('/add', [HomeController::class, 'add']);
+// Route::get('/delete', [HomeController::class, 'delete']);
+
+
+//  multiple times HomeController is being called so to make it more convinent we can do this:
+Route::controller(HomeController::class)->group(function () {
+    Route::get('showdata', 'show');
+    Route::get('deletedata', 'delete');
+    // Route::get('adddata', 'add');
+    Route::get('name/{name}', 'add ');
+});
+
+// Route::get('/about/{name}', [HomeController::class, 'add']);

@@ -11,4 +11,18 @@ class HomeController extends Controller
     {
         return "Welcome to Nepal";
     }
+    public function add($name)
+    {
+        // return "Student Added Successfull{name}.";
+        // return view('manage.home');
+        return $name;
+    }
+    public function delete()
+    {
+        return "Student Deleted Successfully.";
+    }
+    public function show()
+    {
+        return 'Data is being shown.';
+    }
 }

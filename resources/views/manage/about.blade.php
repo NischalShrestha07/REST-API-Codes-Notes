@@ -1,5 +1,6 @@
 <div>
-    Hello About hai ta
+    Hello About hai
+    la chalo hai ta{{name}}
     <br>
     {{-- {{URL::current()}} --}}
     {{-- above gives the route --}}
