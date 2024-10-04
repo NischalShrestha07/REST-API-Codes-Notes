@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ManageController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AgeCheck;
+use App\Http\Middleware\CountryCheck;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -68,11 +71,40 @@ Route::prefix('country')->group(function () {
 
 //  multiple times HomeController is being called so to make it more convinent we can do this:
 Route::controller(HomeController::class)->group(function () {
-    Route::get('showdata', 'show');
-    Route::get('deletedata', 'delete')->middleware('check1');
-    Route::get('adddata', 'add');
+    Route::get('showData', 'show');
+    // Route::get('deletedata', 'delete')->middleware('check1');
+    route::get('deleteData', 'delete');
+    Route::get('addData', 'add');
     // Route::get('name/{name}', 'add ');
 });
 
-// Route::get('/about/{name}', [HomeController::class, 'add']);
-Route::view('user-form', 'user-form')->middleware('check1');
+// Route::get('/about/{name}', [HomeController::class, 'add'])
+
+
+/**
+ * gohome -> /path
+ * home -> name of view
+ */
+//when multiple middleware need to be passed in single route
+Route::view('goHome', 'home')->middleware('check1');
+
+//GROUP MIDDLEWARE
+//when multiple middleware need to be passed in multiple route
+Route::middleware('check1')->group(function () {
+    Route::view('letsGo', 'welcome');
+    Route::view('goManage', 'manage.home');
+    Route::view('aboutPage', 'about');
+});
+
+//Route Middleware use
+//1.Single Middleware
+// Route::view('hihome', 'home')->middleware(AgeCheck::class);
+
+//2. Multiple Middlewares can be
+Route::view('hiHome', 'home')->middleware(AgeCheck::class, CountryCheck::class);
+Route::view('aboutHome', 'about');
+
+
+
+
+Route::get('/users', [ManageController::class, 'users']);

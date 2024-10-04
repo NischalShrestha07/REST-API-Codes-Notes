@@ -30,14 +30,23 @@ class AgeCheck
         // if ($request->age < 12) {
         //     die('You cannot visit the page');
         // }
-        echo "Age Check";
+        // echo "Age Check";
+
+        //Group of middleware
+        // Path:  http://127.0.0.1:8000/gohome?country=nepal&age=67
+        if ($request->age <= 18) {
+            die('You are under 18 and cannot access this website');
+        }
         return $next($request);
     }
 }
 
 //three types of middleware
-/*
--> GLOBAL MIDDLEWARE
--> ROUTE MIDDLEWARE
--> GLOBAL MIDDLEWARE
-*/
+
+// -> GLOBAL MIDDLEWARE(SINGLE MDLWE)
+// -> GROUP MIDDLEWARE(MULTIPLE MDLWE)
+// -> ROUTE MIDDLEWARE(SINGLE & MULTIPLE MDLWE)
+
+// ->Route mdlwe doesnt needed to add middleware inside bootstrap/app.php rather add into the web.php
+
+

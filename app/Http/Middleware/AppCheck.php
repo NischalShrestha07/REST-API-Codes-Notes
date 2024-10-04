@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CountryCheck
+class AppCheck
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,7 @@ class CountryCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        //check http://127.0.0.1:8000/gohome?country=nepal in browser
-        if ($request->country != 'nepal') {
-            die('You cannot access the website outside Nepal');
-        }
+        echo "We are inside App Check Middleware";
         return $next($request);
     }
 }
