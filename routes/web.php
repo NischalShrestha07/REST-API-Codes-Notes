@@ -69,9 +69,10 @@ Route::prefix('country')->group(function () {
 //  multiple times HomeController is being called so to make it more convinent we can do this:
 Route::controller(HomeController::class)->group(function () {
     Route::get('showdata', 'show');
-    Route::get('deletedata', 'delete');
-    // Route::get('adddata', 'add');
-    Route::get('name/{name}', 'add ');
+    Route::get('deletedata', 'delete')->middleware('check1');
+    Route::get('adddata', 'add');
+    // Route::get('name/{name}', 'add ');
 });
 
 // Route::get('/about/{name}', [HomeController::class, 'add']);
+Route::view('user-form', 'user-form')->middleware('check1');
